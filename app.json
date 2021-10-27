@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "groupler",
+    "slug": "groupler",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "groupler"
+}
