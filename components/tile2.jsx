@@ -7,17 +7,17 @@ import {
 
 import Badge from './badge';
 
-export default function Tile(){
+export default function Tile({title, participants, scheduled}){
     return (
         <View style={styles.container}>
             <View style={{height: "100%", width: 5, backgroundColor: 'green'}} />
             <View>
-                <Text style={styles.title}>Group Title</Text>
+                <Text style={styles.title}>{title}</Text>
                 <View style={styles.rowAlign}>
-                    <Text style={{marginRight: 10, opacity: 0.5}}>Participants: 20</Text>
+                    <Text style={{marginRight: 10, opacity: 0.5}}>Participants: {participants}</Text>
                     <View style={{opacity: 0.5,width: 2, height: 20, marginRight: 10,  backgroundColor: '#252525'}}></View>
                     <Text style={{opacity: 0.5}}>Scheduled : </Text>
-                    <Badge title="Yes" color="green" padding={5}/>
+                    <Badge title={scheduled} color="green" padding={5}/>
                 </View>
                 <View style={styles.rowAlign}>
                     <Badge title="Notifications: 100" color="#c81bd1" padding={10}/>

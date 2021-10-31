@@ -10,7 +10,7 @@ import Tile from '../components/tile2';
 export default function GroupScreen(props){
     return(
         <View style={{justifyContent:'center', alignItems: 'center', marginTop: 30, backgroundColor:'black'}}>
-            <Tile />
+            <Tile title="Group Tittle" participants={20} scheduled="yes"/>
             <Tile />
             <Tile />
         </View>
