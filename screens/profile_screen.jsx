@@ -15,7 +15,7 @@ export default function ProfileScreen(props){
             <View style={styles.dispCent}>
                 <Image style={styles.image} source={{uri: 'https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80'}}/>
                 <Text style={styles.text}>Shivam Akhouri- Lvl. 10</Text> 
-                <Badge title="Hermit" color= "#c051f0"/>
+                <Badge title="Hermit" color= "#c051f0" padding={20}/>
                 <View style={{marginBottom: wp(5)}} />
                 <Achievement data={{title1: 'Total time:', title2:'Average Time:', title3:'Badges:'}}/>
                 <View style={{height: 20, width: wp(100), backgroundColor: '#40de6d'}} />

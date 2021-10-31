@@ -6,10 +6,10 @@ import {
   } from "react-native-responsive-screen";
 
 
-export default function Badge({title, color}){
+export default function Badge({title, color, padding}){
     return (
         <>
-            <View style={[{backgroundColor: color}, styles.badge]}>
+            <View style={[ styles.badge, {backgroundColor: color, paddingLeft: padding, paddingRight: padding}]}>
                 <Text style={{color:'white', fontSize: 16}}>{title}</Text>
             </View>
         </>

@@ -5,8 +5,14 @@ import {
     heightPercentageToDP as hp,
   } from "react-native-responsive-screen";
 
+import Tile from '../components/tile2';
+
 export default function GroupScreen(props){
     return(
-        <Text>This is group Screen</Text>
+        <View style={{justifyContent:'center', alignItems: 'center', marginTop: 30, backgroundColor:'black'}}>
+            <Tile />
+            <Tile />
+            <Tile />
+        </View>
     );
 }
