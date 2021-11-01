@@ -9,6 +9,7 @@ import Home from './screens/home_screen';
 import ProfileScreen from './screens/profile_screen';
 import NewGroupScreen from './screens/newGroup_screen';
 import GroupScreen from './screens/group_screen';
+import QuestionScreen from './screens/question_screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +34,7 @@ export default function App() {
           <Stack.Screen name="Profile" component={ProfileScreen} ></Stack.Screen>
           <Stack.Screen name="Groups" component={GroupScreen}></Stack.Screen>
           <Stack.Screen name="Join New Group" component={NewGroupScreen}></Stack.Screen>
+          <Stack.Screen name="Question" component={QuestionScreen}></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </>
