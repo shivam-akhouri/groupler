@@ -7,6 +7,7 @@ import {
 import Achievement from '../components/achievements';
 import Badge from '../components/badge';
 import Tile from '../components/tile1';
+import Status from '../components/status';
 
 export default function ProfileScreen(props){
     return (
@@ -15,6 +16,7 @@ export default function ProfileScreen(props){
             <View style={styles.dispCent}>
                 <Image style={styles.image} source={{uri: 'https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80'}}/>
                 <Text style={styles.text}>Shivam Akhouri- Lvl. 10</Text> 
+                <Status type='online' color='#51e856'/>
                 <Badge title="Hermit" color= "#c051f0" padding={20}/>
                 <View style={{marginBottom: wp(5)}} />
                 <Achievement data={{title1: 'Total time:', title2:'Average Time:', title3:'Badges:'}}/>
