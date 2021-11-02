@@ -9,6 +9,7 @@ import NewGroupScreen from './screens/newGroup_screen';
 import GroupScreen from './screens/group_screen';
 import QuestionScreen from './screens/question_screen';
 import Timer from './screens/timer_screen';
+import CameraScreen from './screens/camera_screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +36,7 @@ export default function App() {
           <Stack.Screen name="Join New Group" component={NewGroupScreen}></Stack.Screen>
           <Stack.Screen name="Question" component={QuestionScreen}></Stack.Screen>
           <Stack.Screen name="Timer" component={Timer}></Stack.Screen>
+          <Stack.Screen name="Camera" component={CameraScreen}></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </>
