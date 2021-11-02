@@ -4,12 +4,13 @@ import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
   } from "react-native-responsive-screen";
+import LottieView from 'lottie-react-native';
 
 export default function Tile(){
     return (
         <>
             <View style={styles.container}>
-                <Image style={styles.image} source={{uri:'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80'}} />
+                <LottieView source={require('../assets/idea.json')} autoPlay  style={{height: 67,marginLeft: 10, marginRight: 10 }}/>
                 <Text style={styles.text}> Some Random Text</Text>
             </View>
         </>
@@ -22,7 +23,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         borderColor: 'purple',
-        borderWidth: 2
+        borderWidth: 2,
+        height: 70
     },
     image:{
         width: 70, 
