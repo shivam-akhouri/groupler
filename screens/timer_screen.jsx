@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     },
     title:{
         fontSize: wp(12),
+        fontFamily: 'Oswald',
         color: '#f2f2f2',
         marginTop: hp(5)
     },

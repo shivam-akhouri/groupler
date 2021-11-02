@@ -36,7 +36,7 @@ export default function CameraScreen(){
                 <Icon
                     raised
                     name='camera'
-                    color='#ff6805'
+                    color='#000'
                     onPress={()=>handleCapture()} 
                 />
             </RNCamera>
@@ -51,6 +51,6 @@ const styles = StyleSheet.create({
     camera:{
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
     }
 })
