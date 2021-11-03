@@ -7,13 +7,23 @@ import {
 import {Input, Button} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 import Question from '../models/question';
+import firestore from '@react-native-firebase/firestore';
 
 export default function CreateQuestion(){
     const [question, setQeustion] = React.useState("");
     const [badge, setBadge] = React.useState('');
     function handleClick(){
-        var q = new Question('hello', 'bello', 'lello');
+        var q = new Question(question, "", badge);
         console.log(q.printQuestion());
+        firestore()
+            .collection('questions')
+            .add({
+                name: q.question,
+                badge: q.badge
+            })
+            .then(() => {
+                console.log('User added!');
+            });
     }
     return (
         <>
