@@ -8,16 +8,20 @@ import {Slider} from 'react-native-elements'
 import LinearGradient from 'react-native-linear-gradient';
 import TimerButton from '../components/timerButtons';
 import { Icon } from 'react-native-elements';
+import LottieView from 'lottie-react-native';
+import CountDown from 'react-native-countdown-component';
 
 
 export default function Timer(){
     const [time, setTime] = React.useState(0);
     const [showTimer, setShowTimer]  = React.useState(true);
+    const [started, setStarted] = React.useState(false);
     return (
         <>
-            <LinearGradient
+            {/* <LinearGradient
                     colors={['#1167f0','#76a2f5','#93b7fa']}
-                    style={styles.linearGradient}>
+                    style={styles.linearGradient}> */}
+            <LottieView source={require('../assets/concentrate.json')} autoPlay  style={{backgroundColor: 'green',opacity: 0.6, height: hp(75.5), width: wp(100), position: 'absolute'}} />
                 <View style={styles.container}>
                     <Text style={styles.title}>Pick your focus Time:</Text>
                     <Text style={styles.time}>{time} Min.</Text>
@@ -27,13 +31,29 @@ export default function Timer(){
                             raised
                             name='forward'
                             color='#ff6805'
-                            onPress={() => props.func(!props.data)} />
+                            onPress={() =>{
+                                setStarted(true);
+                                setShowTimer(false);
+                                }
+                            } />
                     </View>
+                    }
+                    {started&& 
+                         <CountDown
+                         until={time*60}
+
+                         onFinish={() => {
+                             setShowTimer(true);
+                            setStarted(false);}}
+                         onPress={() => alert('hello')}
+                         size={20}
+                       />
                     }
                     {showTimer &&
                     <Slider 
                         value={time}
-                        onValueChange = {(val)=>setTime(val)}
+                        onValueChange = {(val)=>{setTime(val);}}
+                        onSlidingComplete={(val) => setTime(val)}
                         minimumValue={0}
                         maximumValue={120}
                         trackStyle={{height: 10, color: '#fff'}}
@@ -49,7 +69,7 @@ export default function Timer(){
                     <TimerButton data={showTimer} func={setShowTimer}/>
                     </View>
                 </View>
-            </LinearGradient>
+            {/* </LinearGradient> */}
         </>
     );
 }
@@ -79,6 +99,5 @@ const styles = StyleSheet.create({
     slider:{
         width: wp(95),
         marginTop: hp(10),
-        margin: hp(8)
     }
 })

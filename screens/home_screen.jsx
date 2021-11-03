@@ -15,7 +15,8 @@ export default function Home(props){
             <Button title="Question" onPress={() =>props.navigation.navigate('Question')}></Button>
             <Button title="Timer" onPress={() =>props.navigation.navigate('Timer')}></Button>
             <Button title="Camera" onPress={() =>props.navigation.navigate('Camera')}></Button>
-            <Button title="CreateQuestion" onPress={() =>props.navigation.navigate('CreateQuestion')}></Button>
+            <Button title="CreateQuestion" onPress={() =>props.navigation.navigate('CreateQuestion')}></Button> 
+            <Button title="Room" onPress={() =>props.navigation.navigate('Rooms')}></Button> 
         </>
     );
 }

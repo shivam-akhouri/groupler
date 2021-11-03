@@ -7,8 +7,10 @@
     "start": "react-native start"
   },
   "dependencies": {
+    "@react-native-firebase/app": "^13.0.0",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
+    "agora-rn-uikit": "^3.3.0",
     "expo": "~43.0.0",
     "expo-splash-screen": "~0.13.3",
     "expo-status-bar": "~1.1.0",
@@ -19,9 +21,11 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.2",
+    "react-native-agora": "^3.5.1",
     "react-native-androw": "0.0.34",
     "react-native-camera": "^4.2.1",
     "react-native-camera-hooks": "^0.5.2",
+    "react-native-countdown-component": "^2.7.1",
     "react-native-dynamic-vector-icons": "^1.1.6",
     "react-native-elements": "^3.4.2",
     "react-native-fs": "^2.18.0",
