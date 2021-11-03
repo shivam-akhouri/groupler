@@ -8,7 +8,7 @@ import AnswerTile from '../components/answertile';
 import Badge from '../components/badge';
 
 
-export default function QuestionScreen(){
+export default function QuestionScreen({question, badge, answer}){
     return (
         <>
             <View style={{width: wp(90), marginLeft: 20}}>

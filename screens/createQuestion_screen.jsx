@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar, Image } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, Image, Alert } from 'react-native';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
@@ -14,24 +14,35 @@ export default function CreateQuestion({navigation}){
     const [question, setQeustion] = React.useState("");
     const [badge, setBadge] = React.useState('');
     const [photoUrl, setPhotoUrl] = React.useState("");
-    function handleClick(){
+    const [uploading, setUploading] = React.useState(false);
+    async function handleClick(){
+        setUploading(true);
         var storageRef = storage().ref('dummyPhoto.jpg');
         var q = new Question(question, "", badge);
         console.log(q.printQuestion());
         console.log(photoUrl);
+        if(question== '' || badge==""){
+            Alert.alert("Please Fill out the Input Fields", "Either Question or badge fields are left empty");
+            return;
+        }
         if(photoUrl!= ""){
             const upload = storageRef.putFile("file://"+photoUrl);
             upload.then(()=>console.log("Image uploaded"));
+            const url = await storage().ref('dummyPhoto.jpg').getDownloadURL();
+            console.log(url);
+            q.photoUrl = url;
         }
-        // firestore()
-        //     .collection('questions')
-        //     .add({
-        //         name: q.question,
-        //         badge: q.badge
-        //     })
-        //     .then(() => {
-        //         console.log('User added!');
-        //     });
+        firestore()
+            .collection('questions')
+            .add({
+                name: q.question,
+                badge: q.badge,
+                photoUrl: q.photoUrl
+            })
+            .then(() => {
+                console.log('User added!');
+            });
+        setUploading(false);
         console.log("Done Dana Dan");
     }
     return (
