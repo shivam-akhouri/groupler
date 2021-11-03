@@ -9,21 +9,23 @@ import LinearGradient from 'react-native-linear-gradient';
 import Question from '../models/question';
 import firestore from '@react-native-firebase/firestore';
 
-export default function CreateQuestion(){
+export default function CreateQuestion({navigation}){
     const [question, setQeustion] = React.useState("");
     const [badge, setBadge] = React.useState('');
+    const [photoUrl, setPhotoUrl] = React.useState("");
     function handleClick(){
         var q = new Question(question, "", badge);
         console.log(q.printQuestion());
-        firestore()
-            .collection('questions')
-            .add({
-                name: q.question,
-                badge: q.badge
-            })
-            .then(() => {
-                console.log('User added!');
-            });
+        console.log(photoUrl);
+        // firestore()
+        //     .collection('questions')
+        //     .add({
+        //         name: q.question,
+        //         badge: q.badge
+        //     })
+        //     .then(() => {
+        //         console.log('User added!');
+        //     });
     }
     return (
         <>
@@ -37,7 +39,8 @@ export default function CreateQuestion(){
                             <Input placeholder="Enter badge" value={badge} onChangeText={(val)=>setBadge(val)}/>
                         </View>
                         <View style={{position: 'absolute', width: wp(90), bottom: hp(10)}}>
-                            <Button title="Take Picture" style={{marginBottom: 10}} buttonStyle={{backgroundColor: 'green'}}/>
+                            <Button title="Take Picture" style={{marginBottom: 10}} buttonStyle={{backgroundColor: 'green'}}
+                            onPress={()=>navigation.navigate('Camera', {setPhotoUri: setPhotoUrl})}/>
                             <View style={{margin: hp(1)}} />
                             <Button title="post" onPress={()=>handleClick()} />
                         </View>

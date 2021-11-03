@@ -10,7 +10,7 @@ import { Icon } from 'react-native-elements';
 import RNFS from 'react-native-fs';
 
 
-export default function CameraScreen(props){
+export default function CameraScreen({route}){
     const [{cameraRef}, {takePicture}] = useCamera(null);
     const handleCapture = async ()=>{
         try{
@@ -20,7 +20,7 @@ export default function CameraScreen(props){
             RNFS.moveFile(filepath, newFilePath).then(()=>{
                 console.log("file moved");
             })
-            props.setPhotoUrl(newFilePath);
+            route.params.setPhotoUri(newFilePath);
             console.log("image Moved");
             console.log(data.uri);
         }catch(err){
