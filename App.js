@@ -12,6 +12,7 @@ import Timer from './screens/timer_screen';
 import CameraScreen from './screens/camera_screen';
 import CreateQuestion from './screens/createQuestion_screen';
 import RoomScreen from './screens/room_screen';
+import GoogleSignIn from './screens/login_screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -41,6 +42,7 @@ export default function App() {
           <Stack.Screen name="Camera" component={CameraScreen}></Stack.Screen>
           <Stack.Screen name="CreateQuestion" component={CreateQuestion}></Stack.Screen> 
           <Stack.Screen name="Rooms" component={RoomScreen} ></Stack.Screen>
+          <Stack.Screen name="Login" component={GoogleSignIn} ></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </>
