@@ -1,7 +1,8 @@
 export default class Profile{
-    constructor(name, level, skillBadge, badge, focustime, groups, totalTime, averageTime) {
+    constructor(name, level, status, skillBadge, badge, focustime, groups, totalTime, averageTime) {
         this.name = name;
         this.level  = level;
+        this.status = status;
         this.skillBadge = skillBadge;
         this.badge = badge;
         this.focustime = focustime;
