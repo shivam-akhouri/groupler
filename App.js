@@ -13,6 +13,7 @@ import CameraScreen from './screens/camera_screen';
 import CreateQuestion from './screens/createQuestion_screen';
 import RoomScreen from './screens/room_screen';
 import GoogleSignIn from './screens/login_screen';
+import ChatScreen from './screens/chat_screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,6 +44,7 @@ export default function App() {
           <Stack.Screen name="CreateQuestion" component={CreateQuestion}></Stack.Screen> 
           <Stack.Screen name="Rooms" component={RoomScreen} ></Stack.Screen>
           <Stack.Screen name="Login" component={GoogleSignIn} ></Stack.Screen>
+          <Stack.Screen name="Chat" component={ChatScreen} ></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </>

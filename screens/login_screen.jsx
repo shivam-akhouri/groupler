@@ -36,25 +36,25 @@ export default function GoogleSignIn() {
             firestore().collection('Users').doc(userData.uid).get().then(res=>{
                 if(!res.exists){
                     firestore()
-                .collection('Users')
-                .doc(userData.uid)
-                .set({
-                    uid: userData.uid,
-                    name: userData.displayName,
-                    email: userData.email,
-                    phoneNumber: userData.phoneNumber,
-                    photoUrl: userData.photoURL,
-                    level: "0",
-                    status: "Online",
-                    skillBadge: "Uchi Deshi",
-                    focusTime: 0,
-                    groups: [],
-                    totalTime: 0,
-                    averageTime: 0,
-                })
-                .then(() => {
-                    console.log('User added!');
-                });
+                    .collection('Users')
+                    .doc(userData.uid)
+                    .set({
+                        uid: userData.uid,
+                        name: userData.displayName,
+                        email: userData.email,
+                        phoneNumber: userData.phoneNumber,
+                        photoUrl: userData.photoURL,
+                        level: "0",
+                        status: "Online",
+                        skillBadge: "Uchi Deshi",
+                        focusTime: 0,
+                        groups: [],
+                        totalTime: 0,
+                        averageTime: 0,
+                    })
+                    .then(() => {
+                        console.log('User added!');
+                    });
                 }
             })
             });
