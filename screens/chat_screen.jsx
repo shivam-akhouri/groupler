@@ -17,7 +17,7 @@ export default function ChatScreen(){
             <MessageTile message="Hello this is shivam Akhouri" type="receiver"/>
             <MessageTile message="Hello this is shivam Akhouri  hello mister how do you do?" type="receiver"/>
             <View style={styles.input}>
-                <TextInput style={styles.inputStyle} numberOfLines={1}/>
+                <TextInput style={styles.inputStyle} numberOfLines={1} placeholder="Enter Text Message" placeholderTextColor="#a5a5a5"/>
                 <Icon
                     raised
                     name='send'

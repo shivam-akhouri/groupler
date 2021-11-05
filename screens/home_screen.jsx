@@ -11,6 +11,7 @@ export default function Home(props){
             <Text>This is Homepage</Text>
             <Button title="Profile" onPress={() =>props.navigation.navigate('Profile')}></Button>
             <Button title="Groups" onPress={() =>props.navigation.navigate('Groups')}></Button>
+            <Button title="New Group" onPress={() =>props.navigation.navigate('NewGroup')}></Button>
             <Button title="New" onPress={() =>props.navigation.navigate('Join New Group')}></Button>
             <Button title="Question" onPress={() =>props.navigation.navigate('Question')}></Button>
             <Button title="Timer" onPress={() =>props.navigation.navigate('Timer')}></Button>

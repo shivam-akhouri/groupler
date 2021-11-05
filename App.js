@@ -37,6 +37,7 @@ export default function App() {
           <Stack.Screen name="Groupler" component={Home}></Stack.Screen>
           <Stack.Screen name="Profile" component={ProfileScreen} ></Stack.Screen>
           <Stack.Screen name="Groups" component={GroupScreen}></Stack.Screen>
+          <Stack.Screen name="NewGroup" component={NewGroupScreen}></Stack.Screen>
           <Stack.Screen name="Join New Group" component={NewGroupScreen}></Stack.Screen>
           <Stack.Screen name="Question" component={QuestionScreen}></Stack.Screen>
           <Stack.Screen name="Timer" component={Timer}></Stack.Screen>

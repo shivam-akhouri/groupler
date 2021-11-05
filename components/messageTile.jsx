@@ -18,7 +18,7 @@ export default function MessageTile(props){
                 alignItems: 'center',
                 justifyContent: 'center'
             }}>
-                <Text style={styles.text}>{props.message}</Text>
+                <Text style={styles.text}>{props.message}</Text> 
             </LinearGradient>
             </View>
     );
