@@ -9,6 +9,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Question from '../models/question';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
+import LottieView from 'lottie-react-native';
 
 export default function CreateQuestion({navigation}){
     const [question, setQeustion] = React.useState("");
@@ -56,7 +57,7 @@ export default function CreateQuestion({navigation}){
                             <Input placeholder="Enter the question" numberOfLines={3} value={question} onChangeText={(val)=>setQeustion(val)}/>
                             <Input placeholder="Enter badge" value={badge} onChangeText={(val)=>setBadge(val)}/>
                         </View>
-                        {photoUrl !="" &&
+                        {photoUrl ==""? <LottieView source={require('../assets/imageLoader.json')} autoPlay loop={false}  style={{height: wp(60), alignSelf: 'center' }}/>:
                         <Image source={{uri:"file://"+photoUrl, width: wp(90), height: hp(30)}} />
                         }   
                         <View style={{position: 'absolute', width: wp(90), bottom: hp(10)}}>

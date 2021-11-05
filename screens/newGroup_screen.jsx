@@ -32,9 +32,9 @@ export default function NewGroupScreen(props){
     return(
         <View style={styles.container}>
             <View>
-                <TextInput style={styles.textinput} placeholder="Enter Group Name" value={name} onChangeText={val=>setName(val)}/>
-                <TextInput style={styles.textinput} placeholder="Enter username or email of the participant" value={username} onChangeText={val=>setUserName(val)} />
-                <Button title="Add Member" buttonStyle={{backgroundColor: 'green'}} onPress={()=>handleAddUser(username, participants, setUserName, addParticipant)}/>
+                <TextInput style={styles.textinput} placeholderTextColor="#d5d5d5" placeholder="Enter Group Name" value={name} onChangeText={val=>setName(val)}/>
+                <TextInput style={styles.textinput} placeholderTextColor="#d5d5d5" placeholder="Enter username or email of the participant" value={username} onChangeText={val=>setUserName(val)} />
+                <Button title="Add Member" buttonStyle={{backgroundColor: '#06EA1D'}} onPress={()=>handleAddUser(username, participants, setUserName, addParticipant)}/>
             </View>
             <View>
             <FlatList
@@ -62,7 +62,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     textinput:{
-        backgroundColor: 'white',
+        backgroundColor: '#454545',
+        color: 'white',
         borderWidth: 2,
         borderColor: '#e67132',
         marginTop: 10,
