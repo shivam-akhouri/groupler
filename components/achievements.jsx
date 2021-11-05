@@ -11,17 +11,17 @@ export default function Achievement(props){
             <View style={styles.container}>
                 <View style={{width: wp(32), alignItems:'center'}}>
                     <Text style={styles.text}>{props.data.title1}</Text>
-                    <Text style={styles.text}>20</Text>
+                    <Text style={styles.text}>{props.data.title1Data}</Text>
                 </View>
                 <View style={{width: 2, height: 50, backgroundColor: 'white'}}></View>
                 <View style={{width: wp(32), alignItems:'center'}}>
                     <Text style={styles.text}>{props.data.title2}</Text>
-                    <Text style={styles.text}>200</Text>
+                    <Text style={styles.text}>{props.data.title2Data}</Text>
                 </View>
                 <View style={{width: 2, height: 50, backgroundColor: 'white'}}></View>
                 <View style={{width: wp(32), alignItems:'center'}}>
                     <Text style={styles.text}>{props.data.title3}</Text>
-                    <Text style={styles.text}>20</Text>
+                    <Text style={styles.text}>{props.data.title3Data}</Text>
                 </View>
             </View>
         </>
