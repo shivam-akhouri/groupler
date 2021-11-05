@@ -7,7 +7,7 @@ export async function createNewGroup(groupName, participants){
         name: groupName,
         creatorId: auth().currentUser.uid,
         question: [],
-        participants: [auth().currentUser.email],
+        participants: [auth().currentUser.email, ...participants],
         createdOn: new Date().toUTCString(),
         scheduled: 'No'
     }).then(res=>{

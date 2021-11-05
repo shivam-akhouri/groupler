@@ -10,12 +10,19 @@ import {
 import { createNewGroup } from '../firebase-repository/group';
 
 function handleCreateGroup(name, participants){
-    var res = createNewGroup(name, participants);
+    var people = [];
+    participants.forEach(val=>people.push(val.key))
+    var res = createNewGroup(name, people);
     if(res){
         alert("Group Created Successfully!!");
     }else{
         alert("Some Error occured");
     }
+}
+
+function handleAddUser(username, participants, setUserName, setParticipant){
+    setParticipant([...participants, {key: username}]);
+    setUserName("");
 }
 
 export default function NewGroupScreen(props){
@@ -27,13 +34,16 @@ export default function NewGroupScreen(props){
             <View>
                 <TextInput style={styles.textinput} placeholder="Enter Group Name" value={name} onChangeText={val=>setName(val)}/>
                 <TextInput style={styles.textinput} placeholder="Enter username or email of the participant" value={username} onChangeText={val=>setUserName(val)} />
-                <Button title="Add Member" buttonStyle={{backgroundColor: 'green'}} />
+                <Button title="Add Member" buttonStyle={{backgroundColor: 'green'}} onPress={()=>handleAddUser(username, participants, setUserName, addParticipant)}/>
             </View>
             <View>
             <FlatList
+                style={styles.list}
                 data={participants}
                 renderItem={({ item }) => (
-                    <Tile title={item.name} participants={item.participants.length} scheduled={item.scheduled}/>
+                    <View style={styles.item}>
+                        <Text style={styles.itemText}>{item.key}</Text>
+                    </View>
                 )}
             />
             </View> 
@@ -69,5 +79,22 @@ const styles = StyleSheet.create({
         bottom:  hp(15),
         alignItems:'center',
         justifyContent: 'center'
+    },
+    item:{
+        backgroundColor: 'orange',
+        width: wp(90),
+        height: 40,
+        borderRadius: 6,
+        justifyContent: 'center',
+        marginBottom: 5,
+    },
+    itemText:{
+        marginLeft: 20,
+        color: 'white',
+        fontSize: 23,
+    },
+    list: {
+        marginTop: 20,
+        maxHeight: hp(50)
     }
 })
