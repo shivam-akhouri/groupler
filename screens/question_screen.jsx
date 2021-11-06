@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, Button, Image, FlatList } from 'react-native';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
@@ -8,18 +8,24 @@ import AnswerTile from '../components/answertile';
 import Badge from '../components/badge';
 
 
-export default function QuestionScreen({question, badge, answer}){
+export default function QuestionScreen({route}){
     return (
         <>
             <View style={{width: wp(90), marginLeft: 20}}>
-                <Text style={styles.text}>How is this question ?</Text>
+                <Text style={styles.text}>{route.params.data.question}</Text>
                 <View style={{alignItems: 'flex-start'}}>
                     <Badge title="Important" color="red" padding={10} />
                 </View>
             </View>
             <View style={styles.line}></View>
             <View>
-                <AnswerTile />
+                <FlatList 
+                    data={route.params.data.answer}
+                    renderItem={({item})=>(
+                        <AnswerTile answer={item}/>
+                    )}
+                    keyExtractor={item=>item}
+                />
             </View>
         </>
     );

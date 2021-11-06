@@ -11,7 +11,7 @@ import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import LottieView from 'lottie-react-native';
 
-export default function CreateQuestion({navigation}){
+export default function CreateQuestion({navigation, route}){
     const [question, setQeustion] = React.useState("");
     const [badge, setBadge] = React.useState('');
     const [photoUrl, setPhotoUrl] = React.useState("");
@@ -33,18 +33,31 @@ export default function CreateQuestion({navigation}){
             console.log(url);
             q.photoUrl = url;
         }
+        // firestore()
+        //     .collection('questions')
+        //     .add({
+        //         name: q.question,
+        //         badge: q.badge,
+        //         photoUrl: q.photoUrl
+        //     })
+        //     .then(() => {
+        //         console.log('User added!');
+        //     });
+        // setUploading(false);
         firestore()
-            .collection('questions')
-            .add({
-                name: q.question,
-                badge: q.badge,
-                photoUrl: q.photoUrl
+            .collection('Groups')
+            .doc(route.params.id)
+            .get()
+            .then(res=>{
+                var result = res.data().question;
+                firestore()
+                .collection('Groups')
+                .doc(route.params.id)
+                .update({
+                    'question':[...result, {'question': q.question, 'answer': [], 'photoUrl': q.photoUrl, 'badge': q.badge}]
+                }).then((_)=>console.log("Done Dana Dan"));
             })
-            .then(() => {
-                console.log('User added!');
-            });
-        setUploading(false);
-        console.log("Done Dana Dan");
+        
     }
     return (
         <>

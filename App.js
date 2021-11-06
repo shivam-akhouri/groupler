@@ -16,6 +16,7 @@ import GoogleSignIn from './screens/login_screen';
 import ChatScreen from './screens/chat_screen';
 import PdfScreen from './screens/pdf_screen';
 import GroupDetail from './screens/group_details';
+import QuestionListScreen from './screens/questionList';
 
 const Stack = createNativeStackNavigator();
 
@@ -50,6 +51,7 @@ export default function App() {
           <Stack.Screen name="Chat" component={ChatScreen} ></Stack.Screen>
           <Stack.Screen name="Pdf" component={PdfScreen} ></Stack.Screen>
           <Stack.Screen name="GroupDetail" component={GroupDetail} ></Stack.Screen>
+          <Stack.Screen name="QuestionList" component={QuestionListScreen} ></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </>
