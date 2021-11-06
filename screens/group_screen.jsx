@@ -42,7 +42,9 @@ export default function GroupScreen(props){
                     <FlatList
                         data={data}
                         renderItem={({ item }) => (
-                            <TouchableOpacity onPress={()=>props.navigation.navigate('GroupDetail')} >
+                            <TouchableOpacity onPress={()=>{
+                                console.log(item)
+                                props.navigation.navigate('GroupDetail', {id: item.key})}} >
                                 <Tile title={item.name} participants={item.participants.length} scheduled={item.scheduled}/>
                             </TouchableOpacity>
                         )}

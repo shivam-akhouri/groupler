@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar, Image, Alert, FlatList } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, Image, Alert, FlatList, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {
     widthPercentageToDP as wp,
@@ -7,12 +7,12 @@ import {
   } from "react-native-responsive-screen";
   import LottieView from 'lottie-react-native';
 const data = [
-    {id: 'a', value: require('../assets/chat.json'), title: 'Chat'},
-    {id: 'b', value: require('../assets/files.json'), title: 'Files'},
-    {id: 'c', value: require('../assets/voice.json'), title: 'Room'},
-    {id: 'd', value: require('../assets/question.json'), title: 'Questions'},
-    {id: 'e', value: require('../assets/question.json'), title: 'Updated Soon'},
-    {id: 'f', value: require('../assets/question.json'), title: 'Updated Soon'},
+    {id: 'a', value: require('../assets/chat.json'), title: 'Chat', screen:'Chat'},
+    {id: 'b', value: require('../assets/files.json'), title: 'Files', screen: 'Chat'},
+    {id: 'c', value: require('../assets/voice.json'), title: 'Room', screen: 'Rooms'},
+    {id: 'd', value: require('../assets/question.json'), title: 'Questions', screen: 'QuestionList'},
+    {id: 'e', value: require('../assets/createquestion.json'), title: 'Create Question', screen: 'CreateQuestion'},
+    {id: 'f', value: require('../assets/timer.json'), title: 'Timer', screen: 'Timer'},
 ];
 
 function Tile({image, title}){
@@ -26,14 +26,17 @@ function Tile({image, title}){
     );
 }
 
-export default function GroupDetail(){
+export default function GroupDetail({navigation, route}){
+    console.log(route.params.id);
     return (
         <View style={styles.container}>
             <FlatList
                 contentContainerStyle={styles.list}
                 data={data}
                 renderItem={({item})=>(
-                    <Tile image={item.value} title={item.title}/>
+                    <TouchableOpacity onPress={()=>navigation.navigate(item.screen, {id: route.params.id})} >
+                        <Tile image={item.value} title={item.title}/>
+                    </TouchableOpacity>
                 )}
                 keyExtractor={item=>item.id}
                 numColumns={2}
