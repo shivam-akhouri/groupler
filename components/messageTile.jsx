@@ -18,6 +18,7 @@ export default function MessageTile(props){
                 alignItems: 'center',
                 justifyContent: 'center'
             }}>
+                <Text style={{alignSelf: props.type=='sender'?'flex-end': 'flex-start', color: '#d6c50d'}}>{props.sender}</Text>
                 <Text style={styles.text}>{props.message}</Text> 
             </LinearGradient>
             </View>
@@ -36,5 +37,5 @@ const styles = StyleSheet.create({
     text:{
         fontSize: 15,
         color:'#fff',
-    }
+    },
 })
