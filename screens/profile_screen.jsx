@@ -18,7 +18,7 @@ function Profile(props){
         <>
         <View style={styles.container}>
             <View style={styles.dispCent}>
-                <Image style={styles.image} source={{uri: 'https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80'}}/>
+                <Image style={styles.image} source={{uri: props.data.photoUrl}}/>
                 <Text style={styles.text}>{props.data.name}- Lvl. {props.data.level}</Text> 
                 <Status type={props.data.status} color='#51e856'/>
                 <Badge title={props.data.skillBadge} color= "#c051f0" padding={20}/>
