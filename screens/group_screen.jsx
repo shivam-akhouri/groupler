@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar, ActivityIndicator, FlatList } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, ActivityIndicator, FlatList, Pressable, TouchableOpacity } from 'react-native';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
@@ -42,7 +42,9 @@ export default function GroupScreen(props){
                     <FlatList
                         data={data}
                         renderItem={({ item }) => (
-                            <Tile title={item.name} participants={item.participants.length} scheduled={item.scheduled}/>
+                            <TouchableOpacity onPress={()=>props.navigation.navigate('GroupDetail')} >
+                                <Tile title={item.name} participants={item.participants.length} scheduled={item.scheduled}/>
+                            </TouchableOpacity>
                         )}
                     />
                 </View>

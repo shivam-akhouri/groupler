@@ -14,6 +14,8 @@ import CreateQuestion from './screens/createQuestion_screen';
 import RoomScreen from './screens/room_screen';
 import GoogleSignIn from './screens/login_screen';
 import ChatScreen from './screens/chat_screen';
+import PdfScreen from './screens/pdf_screen';
+import GroupDetail from './screens/group_details';
 
 const Stack = createNativeStackNavigator();
 
@@ -46,6 +48,8 @@ export default function App() {
           <Stack.Screen name="Rooms" component={RoomScreen} ></Stack.Screen>
           <Stack.Screen name="Login" component={GoogleSignIn} ></Stack.Screen>
           <Stack.Screen name="Chat" component={ChatScreen} ></Stack.Screen>
+          <Stack.Screen name="Pdf" component={PdfScreen} ></Stack.Screen>
+          <Stack.Screen name="GroupDetail" component={GroupDetail} ></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </>
