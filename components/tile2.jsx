@@ -24,7 +24,7 @@ export default function Tile({title, participants, scheduled}){
                     <Badge title="Notifications: 100" color="#1aa33c" padding={10}/>
                 </View>
             </View>
-            <View style={{marginLeft: wp(15)}}>
+            <View>
                 <Icon
                     raised
                     name='add'
@@ -37,7 +37,7 @@ export default function Tile({title, participants, scheduled}){
 
 const styles = StyleSheet.create({
     container:{
-        width: wp(98),
+        width: wp(83),
         backgroundColor: '#363636',
         height: hp(15),
         flexDirection: 'row',

@@ -10,7 +10,7 @@ import Shimmer from 'react-native-shimmer';
 
 const data = [
     {id: 'a', value: require('../assets/chat.json'), title: 'Chat', screen:'Chat', loop: false},
-    {id: 'b', value: require('../assets/files.json'), title: 'Files', screen: 'Chat',  loop: false, },
+    {id: 'b', value: require('../assets/files.json'), title: 'Files', screen: 'Chat',  loop: false, width: wp(20), height: hp(14)},
     {id: 'c', value: require('../assets/voice.json'), title: 'Room', screen: 'Rooms',  loop: true},
     {id: 'd', value: require('../assets/question.json'), title: 'Questions', screen: 'QuestionList', loop : false},
     {id: 'e', value: require('../assets/createquestion.json'), title: 'Create Question', screen: 'CreateQuestion', loop : false},
@@ -20,7 +20,7 @@ const data = [
 function Tile({image, title, loop, width, height}){
     return(
         <View style={styles.tile}>
-            <LottieView source={image} autoPlay loop={loop} style={{height: height? height: hp(15), width: wp(20)}}/>
+            <LottieView source={image} autoPlay loop={loop} style={{height: height? height: hp(14), width: wp(20)}}/>
             <Text style={styles.text}>{title}</Text>
         </View>
     );
@@ -41,6 +41,10 @@ export default function GroupDetail({navigation, route}){
                 keyExtractor={item=>item.id}
                 numColumns={2}
             />
+            <View style={styles.design}>
+                {/* <View style={styles.shape}></View> */}
+                <LinearGradient style={styles.shape} useAngle={true} colors={['#f200a2', '#a612e6', '#3d43f2', '#d92929']}></LinearGradient>
+            </View>
         </View> 
     );
 }
@@ -49,7 +53,8 @@ const styles = StyleSheet.create({
     container:{
         width: wp(100),
         height: hp(100),
-        backgroundColor: '#1c1c1c'
+        backgroundColor: 'black',
+        justifyContent: 'space-between'
     },
     tile:{
         width: wp(43),
@@ -57,10 +62,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#333232',
         padding: 10,
         alignItems: 'center',
-        margin: 13,
+        margin: 10,
         borderRadius: 20,
         borderWidth: 2,
-        borderColor: '#169442',
+        borderColor: 'white',
+        elevation: 2,
+        shadowColor: 'green',
+        shadowOffset: {width: 2, height: 2},
+        shadowOpacity: 0.5,
+        shadowRadius: 16,
     },
     tileGrad:{
         width: wp(40),
@@ -78,5 +88,18 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 20,
         fontFamily: 'Oswald',
+    },
+    design:{
+        width: wp(100),
+        height: hp(12),
+        alignItems: 'center',
+        justifyContent: 'flex-end'
+    },
+    shape:{
+        width: wp(80),
+        height: hp(18),
+        backgroundColor: 'red',
+        borderTopRightRadius: hp(7),
+        borderTopLeftRadius: hp(7)
     }
 })

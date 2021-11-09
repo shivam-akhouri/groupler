@@ -7,6 +7,7 @@ import {
 import Tile from '../components/tile2';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
+import LinearGradient from 'react-native-linear-gradient';
 
 
 export default function GroupScreen(props){
@@ -45,6 +46,10 @@ export default function GroupScreen(props){
                             </TouchableOpacity>
                         )}
                     />
+                    <View style={styles.design} >
+                        <LinearGradient style={styles.shape} colors={['#f200a2', '#a612e6', '#3d43f2', '#d92929']}></LinearGradient>
+
+                    </View>
                 </View>
         );  
 }
@@ -54,7 +59,21 @@ const styles = StyleSheet.create({
         width: wp(100),
         height: hp(100),
         flex: 1,
-        backgroundColor: '#303030',
-        alignItems: 'center'
+        backgroundColor: 'black',
+        justifyContent: 'center',
+        flexDirection: 'row'
     },  
+    shape:{
+        height: hp(60),
+        backgroundColor: 'orange',
+        width: wp(12),
+        borderBottomLeftRadius: wp(50),
+        borderTopLeftRadius: wp(50)
+    },
+    design:{
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+        width: wp(13), 
+        height: hp(100)
+    }
 })

@@ -17,6 +17,7 @@ import ChatScreen from './screens/chat_screen';
 import PdfScreen from './screens/pdf_screen';
 import GroupDetail from './screens/group_details';
 import QuestionListScreen from './screens/questionList';
+import Homepage from './screens/homepage_screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -52,6 +53,7 @@ export default function App() {
           <Stack.Screen name="Pdf" component={PdfScreen} ></Stack.Screen>
           <Stack.Screen name="GroupDetail" component={GroupDetail} ></Stack.Screen>
           <Stack.Screen name="QuestionList" component={QuestionListScreen} ></Stack.Screen>
+          <Stack.Screen name="Homepage" component={Homepage} ></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </>

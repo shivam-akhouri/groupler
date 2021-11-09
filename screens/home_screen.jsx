@@ -21,6 +21,7 @@ export default function Home(props){
             <Button title="Login" onPress={() =>props.navigation.navigate('Login')}></Button> 
             <Button title="Chat" onPress={() =>props.navigation.navigate('Chat')}></Button> 
             <Button title="Pdf" onPress={() =>props.navigation.navigate('Pdf')}></Button> 
+            <Button title="Home" onPress={() =>props.navigation.navigate('Homepage')}></Button> 
         </>
     );
 }
