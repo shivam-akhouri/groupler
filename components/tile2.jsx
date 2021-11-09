@@ -10,17 +10,17 @@ import Badge from './badge';
 export default function Tile({title, participants, scheduled}){
     return (
         <View style={styles.container}>
-            <View style={{height: "100%", width: 5, backgroundColor: 'green'}} />
+            <View style={styles.ribbon} />
             <View>
                 <Text style={styles.title}>{title}</Text>
                 <View style={styles.rowAlign}>
-                    <Text style={{marginRight: 10, opacity: 0.5}}>Participants: {participants}</Text>
-                    <View style={{opacity: 0.5,width: 2, height: 20, marginRight: 10,  backgroundColor: '#252525'}}></View>
-                    <Text style={{opacity: 0.5}}>Scheduled : </Text>
+                    <Text style={[styles.text,{marginRight: 10, opacity: 0.5}]}>Participants: {participants}</Text>
+                    <View style={[styles.text,{opacity: 0.5,width: 2, height: 20, marginRight: 10,  backgroundColor: '#252525'}]}></View>
+                    <Text style={[styles.text,{opacity: 0.5}]}>Scheduled : </Text>
                     <Badge title={scheduled} color="green" padding={5}/>
                 </View>
                 <View style={styles.rowAlign}>
-                    <Badge title="Notifications: 100" color="#c81bd1" padding={10}/>
+                    <Badge title="Notifications: 100" color="#1aa33c" padding={10}/>
                 </View>
             </View>
         </View>
@@ -29,15 +29,18 @@ export default function Tile({title, participants, scheduled}){
 
 const styles = StyleSheet.create({
     container:{
-        width: wp(90),
-        backgroundColor: '#c8cacf',
-        borderBottomRightRadius: 20,
-        borderTopRightRadius: 20,
-        height: 100,
+        width: wp(98),
+        backgroundColor: '#363636',
+        height: hp(15),
         flexDirection: 'row',
-        marginBottom: 10,
-        elevation: 5,
-        shadowOffset: {height: 4, width: -3}
+        margin: 5,
+        borderRadius: 10,
+        elevation: 20,
+        shadowRadius: 10,
+        shadowOffset: {height: 10, width: -5},
+        borderColor: '#169442',
+        borderWidth: 2,
+        shadowColor: 'white'
     },
     rowAlign:{
         flexDirection: 'row',
@@ -49,5 +52,17 @@ const styles = StyleSheet.create({
         fontSize: 30,
         marginLeft: 15,
         marginTop: 5,
-    }
+        color: '#e5e5e5'
+    },
+    text:{
+        color: 'white',
+    },
+    ribbon:{
+        height: "80%",
+        width: 10,
+        marginTop: hp(1.3),
+        backgroundColor: '#d4113e',
+        borderBottomRightRadius: 20,
+        borderTopRightRadius: 20,
+    },
 })

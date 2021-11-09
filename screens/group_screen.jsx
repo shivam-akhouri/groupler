@@ -4,10 +4,7 @@ import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
   } from "react-native-responsive-screen";
-import LinearGradient from 'react-native-linear-gradient';
 import Tile from '../components/tile2';
-import { getGroups } from '../firebase-repository/group';
-
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 
@@ -36,8 +33,7 @@ export default function GroupScreen(props){
             );
         } 
         return(
-            <LinearGradient colors={['#ffcd82', '#13ad13']} style={{alignItems: 'center', width: wp(100), height: hp(100)}}>
-                <View style={{marginTop: hp(5)}}>
+                <View style={styles.container}>
                     {/* <Tile title="Group Tittle" participants={20} scheduled="yes"/> */}
                     <FlatList
                         data={data}
@@ -50,7 +46,6 @@ export default function GroupScreen(props){
                         )}
                     />
                 </View>
-            </LinearGradient>
         );  
 }
 
@@ -59,6 +54,7 @@ const styles = StyleSheet.create({
         width: wp(100),
         height: hp(100),
         flex: 1,
-        backgroundColor: '#363636',
+        backgroundColor: '#303030',
+        alignItems: 'center'
     },  
 })

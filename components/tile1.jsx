@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         width: wp(100),
         flexDirection: 'row',
         alignItems: 'center',
-        borderColor: 'purple',
+        borderColor: '#d5d5d5',
         borderWidth: 2,
         height: 70
     },

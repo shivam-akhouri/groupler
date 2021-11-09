@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar, Image, Alert } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, Alert } from 'react-native';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
@@ -33,17 +33,6 @@ export default function CreateQuestion({navigation, route}){
             console.log(url);
             q.photoUrl = url;
         }
-        // firestore()
-        //     .collection('questions')
-        //     .add({
-        //         name: q.question,
-        //         badge: q.badge,
-        //         photoUrl: q.photoUrl
-        //     })
-        //     .then(() => {
-        //         console.log('User added!');
-        //     });
-        // setUploading(false);
         firestore()
             .collection('Groups')
             .doc(route.params.id)
@@ -61,26 +50,44 @@ export default function CreateQuestion({navigation, route}){
     }
     return (
         <>
-            <LinearGradient style={{width: wp(100), height: hp(100)}}
-                colors={['#fafffa', '#9cff9c']}
-                useAngle={true}
-                angle={135}>
-                    <View style={{width: wp(90), height: hp(90), alignSelf: 'center'}} >
-                        <View style={{marginTop: hp(10)}}>
-                            <Input placeholder="Enter the question" numberOfLines={3} value={question} onChangeText={(val)=>setQeustion(val)}/>
-                            <Input placeholder="Enter badge" value={badge} onChangeText={(val)=>setBadge(val)}/>
-                        </View>
-                        {photoUrl ==""? <LottieView source={require('../assets/imageLoader.json')} autoPlay loop={false}  style={{height: wp(60), alignSelf: 'center' }}/>:
-                        <Image source={{uri:"file://"+photoUrl, width: wp(90), height: hp(30)}} />
-                        }   
-                        <View style={{position: 'absolute', width: wp(90), bottom: hp(10)}}>
-                            <Button title="Take Picture" style={{marginBottom: 10}} buttonStyle={{backgroundColor: 'green'}}
-                            onPress={()=>navigation.navigate('Camera', {setPhotoUri: setPhotoUrl})}/>
-                            <View style={{margin: hp(1)}} />
-                            <Button title="post" onPress={()=>handleClick()} />
-                        </View>
-                    </View>
-            </LinearGradient>
+            <View style={styles.container} >
+                <View style={{marginTop: hp(10)}}>
+                    <TextInput placeholder="Enter the question" style={styles.textinput} numberOfLines={3} value={question} 
+                    placeholderTextColor="white" onChangeText={(val)=>setQeustion(val)}/>
+                    <TextInput placeholder="Enter badge" style={styles.textinput} value={badge} placeholderTextColor="white" onChangeText={(val)=>setBadge(val)}/>
+                </View>
+                {photoUrl ==""? <LottieView source={require('../assets/imageLoader.json')} autoPlay loop={false}  style={{height: wp(60), alignSelf: 'center' }}/>:
+                <Image source={{uri:"file://"+photoUrl, width: wp(90), height: hp(30)}} />
+                }   
+                <View style={{position: 'absolute', width: wp(90), bottom: hp(20)}}>
+                    <Button title="Take Picture" style={{marginBottom: 10}} buttonStyle={{backgroundColor: 'green'}}
+                    onPress={()=>navigation.navigate('Camera', {setPhotoUri: setPhotoUrl})}/>
+                    <View style={{margin: hp(1)}} />
+                    <Button title="post" onPress={()=>handleClick()} />
+                </View>
+            </View>
         </>
     );
 }
+
+const styles = StyleSheet.create({
+    container:{
+        backgroundColor: '#303030',
+        width: wp(100),
+        height: hp(100),
+        alignItems: 'center'
+    },
+    textinput:{
+        backgroundColor: '#454545',
+        color: 'white',
+        borderWidth: 2,
+        borderColor: '#e67132',
+        marginTop: 10,
+        marginBottom: 10,
+        borderRadius: 25,
+        paddingLeft: 20,
+        paddingRight: 15,
+        height: 50,
+        width:wp(90),
+    },
+})

@@ -5,23 +5,23 @@ import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
   } from "react-native-responsive-screen";
-  import LottieView from 'lottie-react-native';
+import LottieView from 'lottie-react-native';
+import Shimmer from 'react-native-shimmer';
+
 const data = [
-    {id: 'a', value: require('../assets/chat.json'), title: 'Chat', screen:'Chat'},
-    {id: 'b', value: require('../assets/files.json'), title: 'Files', screen: 'Chat'},
-    {id: 'c', value: require('../assets/voice.json'), title: 'Room', screen: 'Rooms'},
-    {id: 'd', value: require('../assets/question.json'), title: 'Questions', screen: 'QuestionList'},
-    {id: 'e', value: require('../assets/createquestion.json'), title: 'Create Question', screen: 'CreateQuestion'},
-    {id: 'f', value: require('../assets/timer.json'), title: 'Timer', screen: 'Timer'},
+    {id: 'a', value: require('../assets/chat.json'), title: 'Chat', screen:'Chat', loop: false},
+    {id: 'b', value: require('../assets/files.json'), title: 'Files', screen: 'Chat',  loop: false, },
+    {id: 'c', value: require('../assets/voice.json'), title: 'Room', screen: 'Rooms',  loop: true},
+    {id: 'd', value: require('../assets/question.json'), title: 'Questions', screen: 'QuestionList', loop : false},
+    {id: 'e', value: require('../assets/createquestion.json'), title: 'Create Question', screen: 'CreateQuestion', loop : false},
+    {id: 'f', value: require('../assets/timer.json'), title: 'Timer', screen: 'Timer', loop: false},
 ];
 
-function Tile({image, title}){
+function Tile({image, title, loop, width, height}){
     return(
         <View style={styles.tile}>
-            <LinearGradient colors={['#03a63f', '#9802cf']} style={styles.tileGrad} angle={-45} useAngle={true}>
-                <LottieView source={image} autoPlay  style={{height: hp(13)}}/>
-                <Text style={styles.text}>{title}</Text>
-            </LinearGradient>
+            <LottieView source={image} autoPlay loop={loop} style={{height: height? height: hp(15), width: wp(20)}}/>
+            <Text style={styles.text}>{title}</Text>
         </View>
     );
 }
@@ -34,9 +34,9 @@ export default function GroupDetail({navigation, route}){
                 contentContainerStyle={styles.list}
                 data={data}
                 renderItem={({item})=>(
-                    <TouchableOpacity onPress={()=>navigation.navigate(item.screen, {id: route.params.id})} >
-                        <Tile image={item.value} title={item.title}/>
-                    </TouchableOpacity>
+                        <TouchableOpacity onPress={()=>navigation.navigate(item.screen, {id: route.params.id})} >
+                                <Tile image={item.value} title={item.title} loop={item.loop} width={item.width} height={item.height}/>
+                        </TouchableOpacity>
                 )}
                 keyExtractor={item=>item.id}
                 numColumns={2}
@@ -49,16 +49,18 @@ const styles = StyleSheet.create({
     container:{
         width: wp(100),
         height: hp(100),
-        backgroundColor: '#303030'
+        backgroundColor: '#1c1c1c'
     },
     tile:{
-        width: wp(40),
-        height: hp(20),
-        marginTop: 10,
-        marginBottom: 20,
-        marginRight: 20,
-        marginLeft: 20,
+        width: wp(43),
+        height: hp(23),
+        backgroundColor: '#333232',
+        padding: 10,
+        alignItems: 'center',
+        margin: 13,
         borderRadius: 20,
+        borderWidth: 2,
+        borderColor: '#169442',
     },
     tileGrad:{
         width: wp(40),
