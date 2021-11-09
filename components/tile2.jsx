@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar, Button, Image } from 'react-native';
+import { Icon } from 'react-native-elements';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
@@ -23,6 +24,13 @@ export default function Tile({title, participants, scheduled}){
                     <Badge title="Notifications: 100" color="#1aa33c" padding={10}/>
                 </View>
             </View>
+            <View style={{marginLeft: wp(15)}}>
+                <Icon
+                    raised
+                    name='add'
+                    color='#169144'
+                    onPress={() => console.log('hello')} />
+            </View>
         </View>
     );
 }
@@ -40,7 +48,8 @@ const styles = StyleSheet.create({
         shadowOffset: {height: 10, width: -5},
         borderColor: '#169442',
         borderWidth: 2,
-        shadowColor: 'white'
+        shadowColor: 'white',
+        alignItems: 'center'
     },
     rowAlign:{
         flexDirection: 'row',
@@ -60,7 +69,7 @@ const styles = StyleSheet.create({
     ribbon:{
         height: "80%",
         width: 10,
-        marginTop: hp(1.3),
+        marginTop: (1.3),
         backgroundColor: '#d4113e',
         borderBottomRightRadius: 20,
         borderTopRightRadius: 20,
