@@ -5,7 +5,6 @@ import {
     heightPercentageToDP as hp,
   } from "react-native-responsive-screen";
 import {Input, Button} from 'react-native-elements';
-import LinearGradient from 'react-native-linear-gradient';
 import Question from '../models/question';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';

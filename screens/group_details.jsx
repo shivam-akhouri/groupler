@@ -10,7 +10,7 @@ import Shimmer from 'react-native-shimmer';
 
 const data = [
     {id: 'a', value: require('../assets/chat.json'), title: 'Chat', screen:'Chat', loop: false},
-    {id: 'b', value: require('../assets/files.json'), title: 'Files', screen: 'Chat',  loop: false, width: wp(20), height: hp(14)},
+    {id: 'b', value: require('../assets/files.json'), title: 'Files', screen: 'Files',  loop: false, width: wp(20), height: hp(14)},
     {id: 'c', value: require('../assets/voice.json'), title: 'Room', screen: 'Rooms',  loop: true},
     {id: 'd', value: require('../assets/question.json'), title: 'Questions', screen: 'QuestionList', loop : false},
     {id: 'e', value: require('../assets/createquestion.json'), title: 'Create Question', screen: 'CreateQuestion', loop : false},
