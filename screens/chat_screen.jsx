@@ -6,6 +6,7 @@ import {
     heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import MessageTile from '../components/messageTile';
+import LinearGradient from 'react-native-linear-gradient';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 
@@ -42,6 +43,18 @@ export default function ChatScreen({navigation, route}){
     }
     return (
         <View style = {styles.container}>
+            <View style={styles.status}>
+                <LinearGradient colors={['#f200a2', '#a612e6','#3d43f2',]} 
+                style={styles.status} angle={90} useAngle={true}>  
+                    <Icon
+                    raised
+                    reverse
+                    name='reply'
+                    color='#169144'
+                    onPress={() => navigation.pop()} />
+                    <Text style={styles.header}>Chat</Text>
+                </LinearGradient>
+            </View>
             {/* <MessageTile message="Hello this is shivam Akhouri" type="sender"/>
             <MessageTile message="Hello this is shivam Akhouri" type="sender"/>
             <MessageTile message="Hello this is shivam Akhouri  hello mister how do you do?" type="sender"/>
@@ -104,5 +117,21 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: '#000',
         width: wp(100),
+    },
+    status:{
+        width: wp(100),
+        height: hp(10),
+        borderBottomRightRadius: wp(20),
+        backfaceVisibility: 'hidden',
+        backgroundColor: 'red',
+        justifyContent: 'flex-start',
+        flexDirection: 'row'
+    },
+    header:{
+        marginLeft: wp(4),
+        fontSize: wp(12),
+        alignSelf: 'flex-start',
+        color: 'white',
+        fontFamily: 'Oswald'
     }
 })

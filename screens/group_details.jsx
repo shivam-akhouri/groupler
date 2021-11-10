@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar, Image, Alert, FlatList, TouchableOpacity } from 'react-native';
+import { Icon } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
   } from "react-native-responsive-screen";
 import LottieView from 'lottie-react-native';
-import Shimmer from 'react-native-shimmer';
 
 const data = [
     {id: 'a', value: require('../assets/chat.json'), title: 'Chat', screen:'Chat', loop: false},
@@ -30,6 +30,18 @@ export default function GroupDetail({navigation, route}){
     console.log(route.params.id);
     return (
         <View style={styles.container}>
+            <View style={styles.status}>
+                <LinearGradient colors={['#f200a2', '#a612e6','#3d43f2',]} 
+                style={styles.status} angle={90} useAngle={true}>  
+                    <Icon
+                    raised
+                    reverse
+                    name='reply'
+                    color='#169144'
+                    onPress={() => navigation.pop()} />
+                    <Text style={styles.header}>Details</Text>
+                </LinearGradient>
+            </View>
             <FlatList
                 contentContainerStyle={styles.list}
                 data={data}
@@ -97,9 +109,24 @@ const styles = StyleSheet.create({
     },
     shape:{
         width: wp(80),
-        height: hp(18),
+        height: hp(10),
         backgroundColor: 'red',
         borderTopRightRadius: hp(7),
         borderTopLeftRadius: hp(7)
+    },
+    status:{
+        width: wp(100),
+        height: hp(10),
+        borderBottomRightRadius: wp(20),
+        backgroundColor: 'red',
+        justifyContent: 'flex-start',
+        flexDirection: 'row'
+    },
+    header:{
+        marginLeft: wp(4),
+        fontSize: wp(12),
+        alignSelf: 'flex-start',
+        color: 'white',
+        fontFamily: 'Oswald'
     }
 })

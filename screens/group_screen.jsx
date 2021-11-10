@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar, ActivityIndicator, FlatList, Pressable, TouchableOpacity } from 'react-native';
+import {Icon} from 'react-native-elements';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
@@ -34,6 +35,19 @@ export default function GroupScreen(props){
             );
         } 
         return(
+            <View style={styles.body}>
+                <View style={styles.status}>
+                    <LinearGradient colors={['#f200a2', '#a612e6','#3d43f2',]} 
+                    style={styles.status} angle={90} useAngle={true}>  
+                        <Icon
+                        raised
+                        reverse
+                        name='reply'
+                        color='#169144'
+                        onPress={() => props.navigation.pop()} />
+                        <Text style={styles.header}>Groups</Text>
+                    </LinearGradient>
+                </View>
                 <View style={styles.container}>
                     {/* <Tile title="Group Tittle" participants={20} scheduled="yes"/> */}
                     <FlatList
@@ -51,15 +65,20 @@ export default function GroupScreen(props){
 
                     </View>
                 </View>
+            </View>
         );  
 }
 
 const styles = StyleSheet.create({
-    container:{
+    body:{
         width: wp(100),
         height: hp(100),
-        flex: 1,
         backgroundColor: 'black',
+    },
+    container:{
+        width: wp(100),
+        height: hp(87),
+        flex: 1,
         justifyContent: 'center',
         flexDirection: 'row'
     },  
@@ -75,5 +94,20 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: wp(13), 
         height: hp(100)
+    },
+    status:{
+        width: wp(100),
+        height: hp(10),
+        borderBottomRightRadius: wp(20),
+        backgroundColor: 'red',
+        justifyContent: 'flex-start',
+        flexDirection: 'row'
+    },
+    header:{
+        marginLeft: wp(4),
+        fontSize: wp(12),
+        alignSelf: 'flex-start',
+        color: 'white',
+        fontFamily: 'Oswald'
     }
 })

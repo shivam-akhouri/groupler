@@ -36,10 +36,11 @@ export default function App() {
               fontWeight: 'bold',
               fontSize: 40,
             },
-            headerTitleAlign: 'center'
+            headerTitleAlign: 'center',
+            headerShown: false
           }}
           >
-          <Stack.Screen name="Groupler" component={Home}></Stack.Screen>
+          <Stack.Screen name="Groupler" component={Home} ></Stack.Screen>
           <Stack.Screen name="Profile" component={ProfileScreen} ></Stack.Screen>
           <Stack.Screen name="Groups" component={GroupScreen}></Stack.Screen>
           <Stack.Screen name="NewGroup" component={NewGroupScreen}></Stack.Screen>
@@ -54,7 +55,7 @@ export default function App() {
           <Stack.Screen name="Pdf" component={PdfScreen} ></Stack.Screen>
           <Stack.Screen name="GroupDetail" component={GroupDetail} ></Stack.Screen>
           <Stack.Screen name="QuestionList" component={QuestionListScreen} ></Stack.Screen>
-          <Stack.Screen name="Homepage" component={Homepage} ></Stack.Screen>
+          <Stack.Screen name="Homepage" component={Homepage} options={{headerShown: false}}></Stack.Screen>
           <Stack.Screen name="Files" component={FileScreen} ></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
