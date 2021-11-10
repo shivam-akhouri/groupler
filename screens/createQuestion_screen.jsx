@@ -17,7 +17,7 @@ export default function CreateQuestion({navigation, route}){
     const [uploading, setUploading] = React.useState(false);
     async function handleClick(){
         setUploading(true);
-        var storageRef = storage().ref('dummyPhoto.jpg');
+        var storageRef = storage().ref(route.params.id+"/"+new Date());
         var q = new Question(question, "", badge);
         console.log(q.printQuestion());
         console.log(photoUrl);
@@ -44,8 +44,7 @@ export default function CreateQuestion({navigation, route}){
                 .update({
                     'question':[...result, {'question': q.question, 'answer': [], 'photoUrl': q.photoUrl, 'badge': q.badge}]
                 }).then((_)=>console.log("Done Dana Dan"));
-            })
-        
+            });
     }
     return (
         <>

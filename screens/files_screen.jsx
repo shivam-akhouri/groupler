@@ -7,17 +7,19 @@ import {
 import LottieView from 'lottie-react-native';
 
 
-export default function FileScreen(){
+export default function FileScreen({navigation}){
     return (
         <View style={styles.container}>
             <View style={styles.listFile} >
                 <View style={styles.tile}>
+                    <TouchableOpacity onPress={()=>navigation.navigate('Pdf')}>
                     <View style={styles.innertile}>
                         <LottieView source={require('../assets/file.json')} autoPlay loop={false} style={{height: hp(14), width: wp(20)}}/>
                         <View style={styles.texttile}>
                             <Text style={styles.text} numberOfLines={2}>Hello</Text>
                         </View>
                     </View>
+                    </TouchableOpacity>
                 </View>
             </View>
             <View style = {styles.footer}> 

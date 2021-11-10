@@ -10,6 +10,7 @@ export default function PdfScreen(){
     return(
         <View style={styles.container}>
             <PDFView resource={'https://firebasestorage.googleapis.com/v0/b/group-97e7c.appspot.com/o/Lab%20Exercise%203%20shivam%20Akhouri%2020brs1095.pdf?alt=media&token=20777a39-9331-42e9-8cfa-518e47fadf3e'}
+                on
                 resourceType='url' 
                 style={styles.pdf}
             />
