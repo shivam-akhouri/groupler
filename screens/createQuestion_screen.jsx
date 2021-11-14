@@ -9,6 +9,8 @@ import Question from '../models/question';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import LottieView from 'lottie-react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import { Icon } from 'react-native-elements';
 
 export default function CreateQuestion({navigation, route}){
     const [question, setQeustion] = React.useState("");
@@ -49,15 +51,27 @@ export default function CreateQuestion({navigation, route}){
     return (
         <>
             <View style={styles.container} >
+                <View style={styles.status}>
+                    <LinearGradient colors={['#f200a2', '#a612e6','#3d43f2',]} 
+                    style={styles.status} angle={90} useAngle={true}>  
+                        <Icon
+                        raised
+                        reverse
+                        name='reply'
+                        color='#169144'
+                        onPress={() => navigation.pop()} />
+                        <Text style={styles.header}>Create QN?</Text>
+                    </LinearGradient>
+                </View>
                 <View style={{marginTop: hp(10)}}>
                     <TextInput placeholder="Enter the question" style={styles.textinput} numberOfLines={3} value={question} 
                     placeholderTextColor="white" onChangeText={(val)=>setQeustion(val)}/>
                     <TextInput placeholder="Enter badge" style={styles.textinput} value={badge} placeholderTextColor="white" onChangeText={(val)=>setBadge(val)}/>
                 </View>
-                {photoUrl ==""? <LottieView source={require('../assets/imageLoader.json')} autoPlay loop={false}  style={{height: wp(60), alignSelf: 'center' }}/>:
-                <Image source={{uri:"file://"+photoUrl, width: wp(90), height: hp(30)}} />
+                {photoUrl ==""? <LottieView source={require('../assets/imageLoader.json')} autoPlay loop={false}  style={{height: wp(50), alignSelf: 'center' }}/>:
+                <Image source={{uri:"file://"+photoUrl, width: wp(90), height: hp(35)}} />
                 }   
-                <View style={{position: 'absolute', width: wp(90), bottom: hp(20)}}>
+                <View style={{position: 'absolute', width: wp(90), bottom: hp(10)}}>
                     <Button title="Take Picture" style={{marginBottom: 10}} buttonStyle={{backgroundColor: 'green'}}
                     onPress={()=>navigation.navigate('Camera', {setPhotoUri: setPhotoUrl})}/>
                     <View style={{margin: hp(1)}} />
@@ -88,4 +102,20 @@ const styles = StyleSheet.create({
         height: 50,
         width:wp(90),
     },
+    status:{
+        width: wp(100),
+        height: hp(10),
+        borderBottomRightRadius: wp(20),
+        backfaceVisibility: 'hidden',
+        backgroundColor: 'red',
+        justifyContent: 'flex-start',
+        flexDirection: 'row'
+    },
+    header:{
+        marginLeft: wp(4),
+        fontSize: wp(12),
+        alignSelf: 'flex-start',
+        color: 'white',
+        fontFamily: 'Oswald'
+    }
 })
