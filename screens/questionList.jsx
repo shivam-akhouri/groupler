@@ -12,7 +12,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import LinearGradient from 'react-native-linear-gradient';
 import {Icon} from 'react-native-elements';
 
-function Tile({question, leng}){
+function Tile({question, leng, navigation}){
     return(
         <View style={styles.item}>
             <Text style={styles.itemText}>{question}</Text>
@@ -55,10 +55,11 @@ export default function QuestionListScreen({navigation, route}){
                 keyExtractor={item=>item.question}
                 data={data}
                 renderItem={({item})=>(
-                    <TouchableOpacity onPress={()=>navigation.navigate('Question', {data: item})}>
+                    <TouchableOpacity onPress={()=>navigation.navigate('Question', {data: item,id: route.params.id})}>
                         <Tile question={item.question} leng={item.answer.length} />
                     </TouchableOpacity>
                 )}
+                style={{height: hp(78), marginTop: hp(2)}}
             />
         </View>
     );

@@ -19,7 +19,8 @@ export default function CreateQuestion({navigation, route}){
     const [uploading, setUploading] = React.useState(false);
     async function handleClick(){
         setUploading(true);
-        var storageRef = storage().ref(route.params.id+"/"+new Date());
+        var cloudPath = route.params.id+"/questions/"+new Date()+".jpg";
+        var storageRef = storage().ref(cloudPath);
         var q = new Question(question, "", badge);
         console.log(q.printQuestion());
         console.log(photoUrl);
@@ -29,24 +30,37 @@ export default function CreateQuestion({navigation, route}){
         }
         if(photoUrl!= ""){
             const upload = storageRef.putFile("file://"+photoUrl);
-            upload.then(()=>console.log("Image uploaded"));
-            const url = await storage().ref('dummyPhoto.jpg').getDownloadURL();
-            console.log(url);
-            q.photoUrl = url;
+            upload.then(
+                async ()=>{
+                    console.log("Image uploaded");
+                    const url = await storage().ref(cloudPath).getDownloadURL();
+                    console.log(url);
+                    q.photoUrl = url;
+                    firestore()
+                        .collection('Groups')
+                        .doc(route.params.id)
+                        .get()
+                        .then(res=>{
+                            var result = res.data().question;
+                            if(result){
+                                firestore()
+                                .collection('Groups')
+                                .doc(route.params.id)
+                                .update({
+                                    'question':[...result, {'question': q.question, 'answer': [], 'photoUrl': q.photoUrl, 'badge': q.badge}]
+                                }).then((_)=>console.log("Done Dana Dan"));
+                            }else{
+                                firestore()
+                                .collection('Groups')
+                                .doc(route.params.id)
+                                .update({
+                                    'question':[{'question': q.question, 'answer': [], 'photoUrl': q.photoUrl, 'badge': q.badge}]
+                                }).then((_)=>console.log("Done Dana Dan"));
+                            }
+                        });
+                });
+            setUploading(false);
         }
-        firestore()
-            .collection('Groups')
-            .doc(route.params.id)
-            .get()
-            .then(res=>{
-                var result = res.data().question;
-                firestore()
-                .collection('Groups')
-                .doc(route.params.id)
-                .update({
-                    'question':[...result, {'question': q.question, 'answer': [], 'photoUrl': q.photoUrl, 'badge': q.badge}]
-                }).then((_)=>console.log("Done Dana Dan"));
-            });
     }
     return (
         <>
@@ -75,7 +89,7 @@ export default function CreateQuestion({navigation, route}){
                     <Button title="Take Picture" style={{marginBottom: 10}} buttonStyle={{backgroundColor: 'green'}}
                     onPress={()=>navigation.navigate('Camera', {setPhotoUri: setPhotoUrl})}/>
                     <View style={{margin: hp(1)}} />
-                    <Button title="post" onPress={()=>handleClick()} />
+                    <Button title={uploading? "Uploading....": "Post"} onPress={()=>handleClick()} disabled={uploading} />
                 </View>
             </View>
         </>
