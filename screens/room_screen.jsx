@@ -40,7 +40,10 @@ export default function RoomScreen({route}){
         );
     }
     return (
-        <AgoraUIKit rtcProps={rtcProp} />
+        <>
+            
+            <AgoraUIKit rtcProps={rtcProp} />
+        </>
     );
 }
 const styles = StyleSheet.create({
