@@ -19,6 +19,7 @@ import GroupDetail from './screens/group_details';
 import QuestionListScreen from './screens/questionList';
 import Homepage from './screens/homepage_screen';
 import FileScreen from './screens/files_screen';
+import AnswerScreen from './screens/answer_screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -57,6 +58,7 @@ export default function App() {
           <Stack.Screen name="QuestionList" component={QuestionListScreen} ></Stack.Screen>
           <Stack.Screen name="Homepage" component={Homepage} options={{headerShown: false}}></Stack.Screen>
           <Stack.Screen name="Files" component={FileScreen} ></Stack.Screen>
+          <Stack.Screen name="Answer" component={AnswerScreen} ></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </>
