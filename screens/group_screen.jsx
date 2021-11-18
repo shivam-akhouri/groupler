@@ -9,6 +9,7 @@ import Tile from '../components/tile2';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import LinearGradient from 'react-native-linear-gradient';
+import DialogInput from 'react-native-dialog-input';
 
 
 export default function GroupScreen(props){
@@ -56,13 +57,12 @@ export default function GroupScreen(props){
                             <TouchableOpacity onPress={()=>{
                                 console.log(item)
                                 props.navigation.navigate('GroupDetail', {id: item.key})}} >
-                                <Tile title={item.name} participants={item.participants.length} scheduled={item.scheduled}/>
+                                <Tile title={item.name} participants={item.participants.length} scheduled={item.scheduled} id={item.key}/>
                             </TouchableOpacity>
                         )}
                     />
                     <View style={styles.design} >
                         <LinearGradient style={styles.shape} colors={['#f200a2', '#a612e6', '#3d43f2', '#d92929']}></LinearGradient>
-
                     </View>
                 </View>
             </View>

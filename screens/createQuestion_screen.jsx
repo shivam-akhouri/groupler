@@ -37,27 +37,14 @@ export default function CreateQuestion({navigation, route}){
                     console.log(url);
                     q.photoUrl = url;
                     firestore()
-                        .collection('Groups')
-                        .doc(route.params.id)
-                        .get()
-                        .then(res=>{
-                            var result = res.data().question;
-                            if(result){
-                                firestore()
-                                .collection('Groups')
-                                .doc(route.params.id)
-                                .update({
-                                    'question':[...result, {'question': q.question, 'answer': [], 'photoUrl': q.photoUrl, 'badge': q.badge}]
-                                }).then((_)=>console.log("Done Dana Dan"));
-                            }else{
-                                firestore()
-                                .collection('Groups')
-                                .doc(route.params.id)
-                                .update({
-                                    'question':[{'question': q.question, 'answer': [], 'photoUrl': q.photoUrl, 'badge': q.badge}]
-                                }).then((_)=>console.log("Done Dana Dan"));
-                            }
-                        });
+                    .collection('Groups')
+                    .doc(route.params.id)
+                    .collection('Question')
+                    .add({
+                        'question': q.question,
+                        'photoUrl': q.photoUrl,
+                        'badge': q.badge
+                    });
                 });
             setUploading(false);
         }

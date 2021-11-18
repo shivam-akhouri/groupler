@@ -5,10 +5,14 @@ import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
   } from "react-native-responsive-screen";
+import firestore from '@react-native-firebase/firestore';
 
 import Badge from './badge';
+import DialogInput from 'react-native-dialog-input';
 
-export default function Tile({title, participants, scheduled}){
+
+export default function Tile({title, participants, scheduled, id}){
+    const [showDialog, setShowdialog] = React.useState(false);
     return (
         <View style={styles.container}>
             <View style={styles.ribbon} />
@@ -17,7 +21,7 @@ export default function Tile({title, participants, scheduled}){
                 <View style={styles.rowAlign}>
                     <Text style={[styles.text,{marginRight: 10, opacity: 0.5}]}>Participants: {participants}</Text>
                     <View style={[styles.text,{opacity: 0.5,width: 2, height: 20, marginRight: 10,  backgroundColor: '#252525'}]}></View>
-                    <Text style={[styles.text,{opacity: 0.5}]}>Scheduled : </Text>
+                    <Text style={[styles.text,{opacity: 0.5}]}>Sche : </Text>
                     <Badge title={scheduled} color="green" padding={5}/>
                 </View>
                 <View style={styles.rowAlign}>
@@ -29,7 +33,20 @@ export default function Tile({title, participants, scheduled}){
                     raised
                     name='add'
                     color='#169144'
-                    onPress={() => console.log('hello')} />
+                    onPress={() => setShowdialog(true)} />
+                    <DialogInput isDialogVisible={showDialog}
+                                title={title}
+                                message={"Add participant"}
+                                hintInput ={"Enter email of participant"}
+                                submitInput={ (inputText) => {
+                                    firestore().collection('Groups').doc(id).get()
+                                    .then(res=>{
+                                        var result = res.data();
+                                        firestore().collection('Groups').doc(id).update({'participants': [...result.participants, inputText]})
+                                    })
+                                } }
+                                closeDialog={ () => {setShowdialog(false)}}>
+                    </DialogInput>
             </View>
         </View>
     );

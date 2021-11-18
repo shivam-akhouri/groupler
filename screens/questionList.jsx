@@ -26,9 +26,20 @@ export default function QuestionListScreen({navigation, route}){
     const [data, setData]  =React.useState([])
 
     React.useEffect(()=>{
-        firestore().collection('Groups').doc(route.params.id).get().then(res=>{
-            var grpData = res.data();
-            setData(grpData.question);
+        // firestore().collection('Groups').doc(route.params.id).get().then(res=>{
+        //     var grpData = res.data();
+        //     setData(grpData.question);
+        //     setLoading(false);
+    // });
+        firestore().collection('Groups').doc(route.params.id).collection('Question')
+        .get().then(res=>{
+            var data = res.docs;
+            var questions = [];
+            data.forEach(val =>{
+                questions.push({...val.data(), 'id': val.id });
+            });
+            // console.log(questions);
+            setData(questions);
             setLoading(false);
         });
     },[]);
@@ -56,7 +67,7 @@ export default function QuestionListScreen({navigation, route}){
                 data={data}
                 renderItem={({item})=>(
                     <TouchableOpacity onPress={()=>navigation.navigate('Question', {data: item,id: route.params.id})}>
-                        <Tile question={item.question} leng={item.answer.length} />
+                        <Tile question={item.question} leng={0} />
                     </TouchableOpacity>
                 )}
                 style={{height: hp(78), marginTop: hp(2)}}

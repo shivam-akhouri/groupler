@@ -21,8 +21,8 @@ export default function CameraScreen({route}){
                 console.log("file moved");
             })
             route.params.setPhotoUri(newFilePath);
-            console.log("image Moved");
-            console.log(data.uri);
+            // console.log("image Moved");
+            // console.log(data.uri);
         }catch(err){
             console.log(err);
         }

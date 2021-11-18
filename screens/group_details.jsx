@@ -21,7 +21,7 @@ function Tile({image, title, loop, width, height}){
     return(
         <View style={styles.tile}>
             <LottieView source={image} autoPlay loop={loop} style={{height: height? height: hp(14), width: wp(20)}}/>
-            <Text style={styles.text}>{title}</Text>
+            <Text style={styles.text} numberOfLines={1}>{title}</Text>
         </View>
     );
 }

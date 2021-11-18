@@ -6,12 +6,17 @@ import {
 } from "react-native-responsive-screen";
 
 export default function AnswerTile({answer}) {
+    console.log(answer);
     return (
         <>
             <View style={styles.container}>
                 <Text style={styles.text}>
-                    {answer}
+                    {answer.item.answer}
                 </Text>
+                {
+                answer.item.photoUrl ==""?<View/>:
+                <Image source={{uri:answer.item.photoUrl, width: wp(90), height: hp(90)}} />
+                }
                 <View style={styles.line}></View>
             </View>
         </>
@@ -21,7 +26,7 @@ export default function AnswerTile({answer}) {
 const styles = StyleSheet.create({
     container:{
         width: wp(90),
-        opacity: 0.6,
+        opacity: 1,
         alignSelf: 'center'
     },
     text:{
